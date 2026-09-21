@@ -1,0 +1,16 @@
+budget workload       baseline_gap_ms mixed_gap_ms reduction_pct baseline_tok/s mixed_tok/s
+   128 all_decode                3.80         3.70          2.66        1297.24     1299.69
+   128 all_prefill                N/A          N/A           N/A          12.11       12.64
+   128 short_decode             17.08        16.80          1.63        1250.92     1273.47
+   128 long_decode             383.89        33.42         91.29         286.19      269.07
+   128 many_long              1574.42        35.54         97.74         110.80      102.95
+   512 all_decode                3.77         3.68          2.47        1286.02     1299.40
+   512 all_prefill                N/A          N/A           N/A          45.32       46.12
+   512 short_decode             17.30        18.24         -5.39        1254.27     1238.94
+   512 long_decode             100.41        27.55         72.56         688.76      654.22
+   512 many_long               388.27        39.55         89.81         366.05      314.15
+  1024 all_decode                3.67         4.01         -9.32        1294.75     1275.36
+  1024 all_prefill                N/A          N/A           N/A          84.85       80.14
+  1024 short_decode             20.39        17.63         13.54        1207.03     1239.24
+  1024 long_decode              72.43        26.78         63.02         797.28      812.72
+  1024 many_long               269.11        31.13         88.43         482.28      468.98

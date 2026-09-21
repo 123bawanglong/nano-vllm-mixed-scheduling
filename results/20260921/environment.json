@@ -1,0 +1,10 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "transformers": "5.16.1",
+    "flash-attn": "2.8.3.post1",
+    "xxhash": "4.0.1"
+  }
+}

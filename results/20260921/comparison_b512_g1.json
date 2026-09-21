@@ -1,0 +1,168 @@
+{
+  "budget": 512,
+  "graph": 1,
+  "smoke_tokens_equal": true,
+  "forced_tokens_equal": true,
+  "rows": [
+    {
+      "key": [
+        0,
+        0
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999912977218628,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        0,
+        1
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999833106994629,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        0,
+        2
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999918341636658,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        0,
+        3
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999932050704956,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        1,
+        0
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999890327453613,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        1,
+        1
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999845027923584,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        1,
+        2
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999857544898987,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        1,
+        3
+      ],
+      "relative_l2": 0.0,
+      "cosine": 0.9999865293502808,
+      "max_abs": 0.0,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        2,
+        0
+      ],
+      "relative_l2": 0.010517575778067112,
+      "cosine": 0.9999404549598694,
+      "max_abs": 0.125,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        2,
+        1
+      ],
+      "relative_l2": 0.016570813953876495,
+      "cosine": 0.9998753666877747,
+      "max_abs": 0.1328125,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        2,
+        2
+      ],
+      "relative_l2": 0.01578233577311039,
+      "cosine": 0.9998878240585327,
+      "max_abs": 0.109375,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        2,
+        3
+      ],
+      "relative_l2": 0.012680361047387123,
+      "cosine": 0.9999086260795593,
+      "max_abs": 0.15625,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        3,
+        0
+      ],
+      "relative_l2": 0.013320766389369965,
+      "cosine": 0.9999155402183533,
+      "max_abs": 0.10546875,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        3,
+        1
+      ],
+      "relative_l2": 0.011161415837705135,
+      "cosine": 0.9999327659606934,
+      "max_abs": 0.09375,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        3,
+        2
+      ],
+      "relative_l2": 0.012065935879945755,
+      "cosine": 0.9999161958694458,
+      "max_abs": 0.109375,
+      "top1_equal": true
+    },
+    {
+      "key": [
+        3,
+        3
+      ],
+      "relative_l2": 0.01095347199589014,
+      "cosine": 0.9999264478683472,
+      "max_abs": 0.09375,
+      "top1_equal": true
+    }
+  ]
+}
