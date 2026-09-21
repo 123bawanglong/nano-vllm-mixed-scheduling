@@ -5,7 +5,6 @@ from nanovllm.engine.sequence import Sequence
 
 @dataclass(frozen=True, slots=True)
 class ScheduleOutput:
-    """One iteration, two homogeneous sub-batches; counts survive postprocess."""
     decode_seqs: tuple[Sequence, ...]
     prefill_seqs: tuple[Sequence, ...]
     num_decode_tokens: int = field(init=False)

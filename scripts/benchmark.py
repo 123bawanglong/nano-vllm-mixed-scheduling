@@ -1,8 +1,3 @@
-"""Fresh-process scheduler comparison; timing includes host preparation and sampling.
-
-Correctness uses request/position keyed teacher forcing without modifying the sampler.
-Benchmark uses the original stochastic sampler. No logits hook runs during timing.
-"""
 import argparse
 import atexit
 import json
@@ -44,7 +39,6 @@ class Probe:
         original_run = runner.run
         original_postprocess = engine.scheduler.postprocess
         probe = self
-        # Count actual replay calls, preserving the graph object's implementation.
         class GraphProxy:
             def __init__(self, graph):
                 self.graph = graph
@@ -230,7 +224,6 @@ def main():
     else:
         cases = []
         names = ['all_decode', 'all_prefill', 'short_decode', 'long_decode', 'many_long']
-        # Warm every case before measuring; unique prompts prevent prefix-cache hits.
         for name in names:
             probe.case(name, 99, warm=True)
         for rep in range(args.reps):

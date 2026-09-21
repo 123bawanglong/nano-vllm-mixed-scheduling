@@ -1,4 +1,3 @@
-"""Run serially on one GPU: correctness gate first, then benchmark."""
 import argparse
 import json
 import os
@@ -60,7 +59,6 @@ def main():
     if args.action in ('benchmark', 'all'):
         for budget in (128, 512, 1024):
             assert (DEST/f'comparison_b{budget}_g1.json').exists(), 'run correctness first'
-            # Reverse process order in the second round to reduce warm/thermal bias.
             for label, backends in (('ab', ('baseline', 'mixed')), ('ba', ('mixed', 'baseline'))):
                 for backend in backends:
                     run(backend, budget, 1, 'benchmark', label)

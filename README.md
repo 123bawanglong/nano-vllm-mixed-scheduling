@@ -16,7 +16,7 @@
 
 ![image-20260921222122566](images/image-20260921222122566.png)
 
-Scheduler 先处理 waiting 中的 Prefill；只要选中了 Prefill，就在第 54–55 行直接返回，本轮不会继续安排 Decode。
+Scheduler 先处理 waiting 中的 Prefill；只要选中了 Prefill，就直接返回，本轮不会继续安排 Decode。
 
 **已有 Chunked Prefill 只限制了单次计算量，没有保证每个 chunk 之间让 Decode 执行。** 因此，多个 Prefill chunk 仍可能连续阻塞已有请求。
 

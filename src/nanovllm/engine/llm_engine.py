@@ -52,8 +52,6 @@ class LLMEngine:
         scheduled = self.scheduler.schedule()
         outputs = []
         phase_seconds = {False: 0., True: 0.}
-        # One scheduling decision, two sequential homogeneous executions. Keep
-        # ModelRunner's decode graph replay and dynamic prefill paths unchanged.
         for seqs, is_prefill in ((scheduled.decode_seqs, False), (scheduled.prefill_seqs, True)):
             if not seqs:
                 continue

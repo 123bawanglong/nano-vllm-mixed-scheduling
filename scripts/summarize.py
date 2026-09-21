@@ -1,4 +1,3 @@
-"""Summarize the raw process results without changing their measurements."""
 import argparse
 import csv
 import json

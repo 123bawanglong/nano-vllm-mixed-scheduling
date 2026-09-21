@@ -24,7 +24,6 @@ class Scheduler:
         return not self.waiting and not self.running
 
     def add(self, seq: Sequence):
-        # Keep the existing full-sequence allocation contract, fail impossible requests.
         if seq.num_blocks > len(self.block_manager.blocks):
             raise ValueError('request exceeds KV block capacity under full-sequence reservation')
         self.waiting.append(seq)
@@ -34,15 +33,12 @@ class Scheduler:
             raise RuntimeError('postprocess the previous schedule before scheduling again')
         decode_seqs, prefill_seqs = [], []
         remaining = self.max_num_batched_tokens
-        # Reserve decode budget and append blocks before admitting any prefill.
         while self.running and len(decode_seqs) < self.max_num_seqs and remaining:
             seq = self.running.popleft()
             while not self.block_manager.can_append(seq):
                 if self.running:
                     self.preempt(self.running.pop())
                 elif self._release_waiting_reservation():
-                    # Partial prefills can hold every free block across iterations.
-                    # Reclaim their KV before sacrificing the last active decoder.
                     continue
                 else:
                     self.preempt(seq)
@@ -55,8 +51,6 @@ class Scheduler:
                 remaining -= 1
         self.running.extendleft(reversed(decode_seqs))
 
-        # Leave selected prefills WAITING until their GPU work succeeds. Do not
-        # revisit them within this iteration or cross an unfinished FIFO head.
         for seq in self.waiting:
             if not remaining or len(decode_seqs) + len(prefill_seqs) >= self.max_num_seqs:
                 break
@@ -81,8 +75,6 @@ class Scheduler:
         return ScheduleOutput(tuple(decode_seqs), tuple(prefill_seqs))
 
     def _release_waiting_reservation(self, exclude=None) -> bool:
-        # Keep FIFO position; recompute discarded partial KV later. Selected
-        # decode requests are outside this queue and can never be evicted here.
         for victim in reversed(self.waiting):
             if victim is not exclude and victim.block_table:
                 self.block_manager.deallocate(victim)

@@ -38,7 +38,7 @@ class SchedulerTests(unittest.TestCase):
         for batch in (output.decode_seqs, output.prefill_seqs):
             if batch:
                 scheduler.postprocess(batch, [token] * len(batch))
-        self.assertEqual(output.num_scheduled_tokens, before)  # counts are snapshots
+        self.assertEqual(output.num_scheduled_tokens, before)
         self.invariants(scheduler)
 
     def invariants(self, scheduler):
@@ -70,7 +70,7 @@ class SchedulerTests(unittest.TestCase):
         out = self.schedule(sch)
         self.assertEqual(out.num_prefill_tokens, 5)
         self.assertFalse(out.decode_seqs)
-        self.assertEqual(a.status, SequenceStatus.WAITING)  # execution hasn't succeeded yet
+        self.assertEqual(a.status, SequenceStatus.WAITING)
         self.finish(sch, out)
         self.assertEqual(a.num_cached_tokens, 5)
         self.assertEqual(a.num_tokens, 6)
@@ -172,10 +172,10 @@ class SchedulerTests(unittest.TestCase):
         self.prime(sch,[a])
         d = self.seq(8,100)
         sch.add(d)
-        first = self.schedule(sch)  # A uses last slot; D reserves the other two blocks
+        first = self.schedule(sch)
         self.finish(sch,first)
         self.assertEqual(d.num_cached_tokens,3)
-        out = self.schedule(sch)  # A now needs a new block; reclaim D reservation
+        out = self.schedule(sch)
         self.assertEqual(out.decode_seqs,(a,))
         self.assertFalse(d.block_table)
         self.assertEqual(d.num_cached_tokens,0)
