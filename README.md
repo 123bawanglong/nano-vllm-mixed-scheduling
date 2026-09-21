@@ -2,7 +2,7 @@
 
 环境：RTX 5080 / Qwen3-0.6B / BF16 / PyTorch 2.11.0+cu128。两组均使用上游算子实现并开启 Decode CUDA Graph，不包含自定义 CUDA 融合扩展。
 
-复测日期：2026-09-21。本次对比上游调度与纯混合调度。现有截图暂留，待替换为本次实验截图；以下文字和表格已更新为最新数据。
+复测日期：2026-09-21。本次对比上游调度与纯混合调度。
 
 ## 1. 测试：长 Prompt 加入后，Decode 出现停顿
 
@@ -54,3 +54,5 @@ Decode 保留 CUDA Graph，Prefill 沿用 eager 路径；两组在同一调度�
 单长 Prompt 场景中，新方案每次出现 **6 个混合 iteration**，同时保留 **31 次实际 Graph replay**，说明 Prefill 推进期间 Decode 得到了执行机会。
 
 **优化效果：将连续 Prefill 导致的一次长等待，分散到多轮执行中，明显缩短最大停顿。** 代价是单长 Prompt 场景的新请求首 token 延迟从 **95.85 ms 增至 125.94 ms**，输出吞吐从 **688.76 降至 654.22 token/s**；四长 Prompt 场景的吞吐从 **366.05 降至 314.15 token/s**。短输入也并非总有收益：预算 512 时，最大停顿从 17.30 ms 增至 18.24 ms。
+
+[全部负载结果表](results/20260921/comparison.txt) · [实验原始数据下载与复核说明](https://github.com/123bawanglong/nano-vllm-mixed-scheduling/releases/tag/experiment-20260921)

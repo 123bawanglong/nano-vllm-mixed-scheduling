@@ -22,9 +22,4 @@ docs/
 results/*
 !results/20260921/
 results/20260921/*
-!results/20260921/*_benchmark.json
-!results/20260921/*_correctness.json
-!results/20260921/comparison_b*.json
 !results/20260921/comparison.txt
-!results/20260921/environment.json
-!results/20260921/source_manifest.json
